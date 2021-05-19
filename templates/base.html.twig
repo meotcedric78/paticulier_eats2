@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
+    {% endblock %}
+
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <img  height="40" src="{{ asset('image/Image d’iOS.jpg') }}" alt="">
+    <a class="navbar-brand text-warning" href="{{ path('home') }}">PartEats</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active mr-4">
+                <a class="nav-link text-white" href="{{ path('home') }}">Accueil</a></li>
+                <a class="nav-link text-white" href="{{ path('mission') }}">Mission</a>
+                <a class="nav-link text-white" href="{{ path('cuisine') }}">Nos Part-cuisiniers</a>
+                <a class="nav-link text-white" href="">Blog</a>
+        </ul>
+            {% if app.user %}
+
+
+
+
+            <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    utilisateur
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('profil') }}">Profil</a>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{ path('backoffice') }}">Back-office</a>
+                        <a class="dropdown-item" href="{{ path('plat') }}">Mes plats</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="dropdown-item" href="{{ path('backofficeCuisinier') }}">Gestion</a>
+                        <a class="dropdown-item" href="{{ path('plat') }}">Mes plats</a>
+                    {% endif %}
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                </div>
+            </div>
+        {% else %}
+
+            <a class="nav-link " href="{{path('login')}}">Connexion</a>
+            <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
+        {% endif %}
+    </div>
+
+    {% if is_granted('ROLE_USER') %}
+    <a href="{{ path('panier') }}">Panier</a>
+    {% endif %}
+</nav>
+
+
+<div class="container">
+
+    {% block body %}{% endblock %}</div>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('js/select2.js') }}"></script>
+{% endblock %}
+
+{% include 'cedric/footer.html.twig' %}
+
+</body>
+
+
+
+
+
+
+</html>

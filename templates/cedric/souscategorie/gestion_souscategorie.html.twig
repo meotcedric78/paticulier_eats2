@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <h1>Gestion des sous-catégories</h1>
+        {% for message in app.flashes('success') %}
+            <div class="col-md-6 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <a class="btn btn-success my-3 " href="{{ path('ajout_souscategorie') }}">Ajouter une nouvelle sous-catégorie</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for souscategorie in souscategories %}
+                <tr>
+                    <td>{{ souscategorie.id }}</td>
+                    <td>{{ souscategorie.nom }}</td>
+                    <td><a href="{{ path('modif_souscategorie',{'id': souscategorie.id }) }}"><img src="{{ asset('image/update.png') }}" alt="modifier"></a></td>
+                    <td><a href="{{ path('delete_souscategorie', {'id': souscategorie.id }) }}"><img src="{{ asset('image/delete.png') }}" alt="supprimer"></a></td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% endblock %}
+
+
+
+
+

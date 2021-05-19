@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Mes plats</h1>
+
+
+
+<div class="row justify-content-end">
+    <div class="col-md-3">
+        <a class="btn btn-success my-3 " href="{{ path('add_produit') }}">Ajouter un nouvel produit</a>
+    </div>
+</div>
+
+
+<div class="row justify-content-around">
+
+    {% for produit in Produits %}
+        <div class="card border-danger " style="max-width: 18rem;">
+            <h5 class="card-title">{{ produit.nom }}</h5>
+            <h4>{{ produit.cuisinier.nom }} {{ produit.cuisinier.prenom }}</h4>
+
+            <h4>{{ produit.cuisinier.ville }} - {{ produit.cuisinier.cp }}</h4>
+
+            <div class="card-img-top mt-3">
+                <img src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" alt="{{ produit.nom }}" width="250" height="300">
+            </div>
+            <div class="card-body ">
+
+                <div>{{ produit.categorie.nom }} - {% for sousCategorie in produit.sousCategories  %}
+                        {{ sousCategorie.nom }}
+                    {% endfor %}
+                </div>
+
+                <p class="card-text">{{ produit.description }}</p>
+                <div>{{ produit.prix }} €</div>
+
+                <a href="{{ path('show_produit', {'id': produit.id}) }}" class="btn btn-secondary">Voir votre produit</a>
+                <a href="{{ path('produit_modif', {'id': produit.id}) }}" class="btn btn-secondary">Modifier votre produit</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

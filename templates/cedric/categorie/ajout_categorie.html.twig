@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajout de catégorie</h1>
+    {{ form_start(form_categorie) }}
+    {{ form_row(form_categorie.nom) }}
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+    {{ form_end(form_categorie) }}
+{% endblock %}

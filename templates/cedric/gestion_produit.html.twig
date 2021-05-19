@@ -1,0 +1,54 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block body %}
+    <h1>Gestion des produits</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="row justify-content-end">
+        <div class="col-md-3">
+            <a class="btn btn-success my-3 " href="{{ path('add_produit') }}">Ajouter un nouvel produit</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">prix</th>
+            <th scope="col">Description</th>
+            <th scope="col">catégorie</th>
+            <th scope="col">souscatégorie</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Voir</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }} €</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.categorie.nom }}</td>
+                <td>
+                {% for sousCategorie in produit.sousCategories  %}
+                    {{ sousCategorie.nom }}
+                {% endfor %}</td>
+
+                <td><img width="40" height="40" src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" alt=""></td>
+                <td><a href="{{ path('show_produit', {'id':  produit.id }) }}">Voir</a></td>
+                <td><a href="{{ path('produit_modif', {'id': produit.id}) }}"><img src="{{ asset('image/update.png') }}" alt="modifier"></a></td>
+                <td><a href="{{ path('produit_delete',{'id': produit.id}) }}" ><img src="{{ asset('image/delete.png') }}" alt="supprimer"></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

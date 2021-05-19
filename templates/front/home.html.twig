@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PARTEAT</h1>
+    <h4>Prêt à régaler vos papilles </h4>
+
+    <div id="carouselExampleIndicators" class="carousel slide style" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3769999.jpg') }}" alt="First slide">
+                <h4>Révéler vos talents culinaires près de chez vous</h4>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('image/pexels-ella-olsson-3026808.jpg') }}" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3785693.jpg') }}" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <div class="carousel-item">
+            <img src="..." alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>...</h5>
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+
+
+
+<form action="{{ path('homefilter') }}"  method="get">
+    <div class="row justify-content-center text-center">
+        <div class="form-group mr-2">
+            <label for="exampleFormControlSelect1">Catégorie</label>
+            <select name="categorie" class="form-control" id="exampleFormControlSelect1">
+                <option value=""></option>
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group mr-2">
+            <label for="exampleFormControlSelect1">Sous-catégorie</label>
+            <select name="sous-categorie" class="form-control" id="exampleFormControlSelect1">
+                <option value=""></option>
+                {% for souscategorie in souscategories %}
+                    <option value="{{ souscategorie.id }}">{{ souscategorie.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="exampleFormControlSelect1">Code postale</label><br>
+            <input name="cp" id="cp" type="number" placeholder="Code postale" >
+        </div>
+    </div>
+    <div class="row justify-content-center text-center">
+        <button type="submit">Trier</button>
+    </div>
+
+</form>
+
+
+
+    <section style="align-items: center">
+        <h2>Les meilleurs plat du moment</h2>
+    </section>
+
+
+    <div class="row justify-content-around">
+
+        {% for produit in produits %}
+        <div class="card border-danger " style="max-width: 18rem;">
+            <h5 class="card-title">{{ produit.nom }}</h5>
+            <h4>{{ produit.cuisinier.nom }} {{ produit.cuisinier.prenom }}</h4>
+
+            <h4>{{ produit.cuisinier.ville }} - {{ produit.cuisinier.cp }}</h4>
+
+            <div class="card-img-top mt-3">
+            <img src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" alt="{{ produit.nom }}" width="250" height="300">
+            </div>
+            <div class="card-body ">
+
+            <div>{{ produit.categorie.nom }} - {% for sousCategorie in produit.sousCategories  %}
+                        {{ sousCategorie.nom }}
+                    {% endfor %}
+            </div>
+
+            <p class="card-text">{{ produit.description }}</p>
+            <div>{{ produit.prix }} €</div>
+
+            <a href="{{ path('show_produit', {'id': produit.id}) }}" class="btn btn-secondary">Voir</a>
+            <a href="{{ path('ajout_panier', {'id': produit.id,'param':"home"}) }}" class="btn btn-secondary">Ajouter au panier</a>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

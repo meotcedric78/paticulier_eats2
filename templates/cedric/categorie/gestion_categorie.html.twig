@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+        <h1>Gestion des catégories</h1>
+        {% for message in app.flashes('success') %}
+            <div class="col-md-6 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <a class="btn btn-success my-3 " href="{{ path('ajout_categorie') }}">Ajouter une nouvelle catégorie</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    <td>{{ categorie.nom }}</td>
+                    <td><a href="{{ path('modif_categorie',{'id': categorie.id }) }}"><img src="{{ asset('image/update.png') }}" alt="modifier"></a></td>
+                    <td><a href="{{ path('delete_categorie', {'id': categorie.id }) }}"><img src="{{ asset('image/delete.png') }}" alt="supprimer"></a></td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% endblock %}
+
+
+
+
+
+
+

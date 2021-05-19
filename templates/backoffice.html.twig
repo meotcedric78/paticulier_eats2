@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Back-office</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+<div class="row">
+    <div style="  height: 100vh" class="col-md-3  vertical-nav bg-dark pl-3" id="sidebar">
+        <nav class="ml-3 p-3">
+            <ul class="nav flex-column pt-5">
+                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white" href="{{path('home') }}">Accueil</a></li>
+                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white" href="{{path('utilisateurs') }}">Utilisateurs</a></li>
+                <li class="nav-item btn btn-secondary m-3">
+                    <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produits
+                        </a>
+
+                        <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="">Liste des produits</a>
+
+                            <a class="dropdown-item text-white" href="{{ path('gestion_produit') }}">Gestion des produits</a>
+
+                            <div class="dropdown-divider text-white"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item btn btn-secondary m-3">
+                    <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catégorie
+                        </a>
+
+                        <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="">Liste des catégories</a>
+
+                            <a class="dropdown-item text-white" href="{{ path('gestion_categorie') }}">Gestion des catégories</a>
+
+                            <div class="dropdown-divider text-white"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item btn btn-secondary m-3">
+                    <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sous-Catégorie
+                        </a>
+
+                        <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="">Liste des Sous-Categorie</a>
+
+                            <a class="dropdown-item text-white" href="{{ path('gestion_souscategorie') }}">Gestion des Sous-Categorie</a>
+
+                            <div class="dropdown-divider text-white"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item btn btn-secondary m-3">
+                    <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Commandes
+                        </a>
+
+                        <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="">Liste des commandes</a>
+
+                            <a class="dropdown-item text-white" href="{{ path('gestion_commandes') }}">Gestion des commandes</a>
+
+                            <div class="dropdown-divider text-white"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item btn btn-secondary m-3">
+                    <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Commission
+                        </a>
+
+                        <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white" href="">Liste des commission</a>
+
+                            <a class="dropdown-item text-white" href="">Gestion des commission</a>
+
+                            <div class="dropdown-divider text-white"></div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </nav>
+
+    </div>
+    <div class="col">
+
+        <div class="container">
+            <div class="text-center">
+                <h1>Back-office</h1>
+            </div>
+            {% block body %}
+
+
+            {% endblock %}</div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>
+
+

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center">
+    <h1>Connexion</h1></div>
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <form action="{{ path('login') }}" method="post" class="border border-dark rounded col-md-3 p-4 mt-4 mx-auto text-center">
+        <label for="_username">E-mail</label>
+        <div class="form-group">
+            <input type="text" placeholder="Veuillez saisir votre email" id="_username" name="_username" value="{{ lastuser }}">
+        </div>
+        <label for="_password">Mot de passe</label>
+        <div class="form-group">
+            <input type="password" placeholder="Veuillez saisir votre mot de passe" id="_password" name="_password" >
+        </div>
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+    </form>
+{% endblock %}

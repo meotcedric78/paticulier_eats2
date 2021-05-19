@@ -1,0 +1,41 @@
+{% extends 'backoffice.html.twig' %}
+{% block body %}
+    <div class="text-center">
+        <h1>Liste des utilisateurs</h1>
+    </div>
+
+    <table class="table border mt-3">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Code Postal</th>
+            <th>Email</th>
+            <th>Date de naissance</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for utilisateur in utilisateurs %}
+        <tr>
+            <td>{{ utilisateur.id }}</td>
+            <td>{{ utilisateur.nom }}</td>
+            <td>{{ utilisateur.prenom }}</td>
+            <td>{{ utilisateur.adresse }}</td>
+            <td>{{ utilisateur.ville }}</td>
+            <td>{{ utilisateur.cp }}</td>
+            <td>{{ utilisateur.email }}</td>
+            <td>{{ utilisateur.birthday | date('d-m-Y') }}</td>
+            <td>
+                <a href="{{ path('delete_user', {'id':utilisateur.id}) }}">
+                    <img src="{{ asset('image/delete.png') }}" alt="supprimer">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

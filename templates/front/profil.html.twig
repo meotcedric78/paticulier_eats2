@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card mt-5">
+        <div class="card-body">
+            <p><span>Pseudo:</span> {{ app.user.username }}</p>
+            <p><span>Nom:</span> {{ app.user.nom }}</p>
+            <p><span>Prénom:</span> {{ app.user.prenom }}</p>
+            <p><span>Date de naissance:</span> {{ app.user.birthday | date('d-m-Y') }}</p>
+            <p><span>Adresse:</span> {{ app.user.adresse }}</p>
+            <p><span>Ville:</span> {{ app.user.ville }}</p>
+            <p><span>Code postale:</span> {{ app.user.cp }}</p>
+            <p><span>Email:</span> {{ app.user.email  }}</p>
+            <a href="{{ path('modif_profil',{'id':app.user.id }) }}" class="btn btn-secondary">Modifier</a>
+        </div>
+    </div>
+{% endblock %}

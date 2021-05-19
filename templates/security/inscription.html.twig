@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if mode==true  %}
+        <h1>Inscription</h1>
+        {% else %}
+        <h1>Modification Profil</h1>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.adresse) }}
+    {{ form_row(form.ville) }}
+    {{ form_row(form.cp) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.confirm_password) }}
+    {{ form_row(form.birthday) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+
+

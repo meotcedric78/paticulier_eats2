@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Détail du produit N° {{ produit.id }}</h1>
+    <div class=" card text-center w-50 mx-auto m-3">
+
+        <div class="card-img-top mt-3">
+            <img src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" height="200" width="200" alt="{{ produit.nom }}" >
+        </div>
+        <div class="card-body">
+            <div><h4 class="card-title">{{ produit.nom }}</h4></div>
+            <div>{{ produit.categorie.nom }}</div>
+            <div>  {% for sousCategorie in produit.sousCategories  %}
+                    {{ sousCategorie.nom }}
+                {% endfor %}</div>
+            <div>  {{ produit.prix}} €</div>
+            <div> {{ produit.description }}</div>
+        </div>
+
+    </div>
+{% endblock %}
