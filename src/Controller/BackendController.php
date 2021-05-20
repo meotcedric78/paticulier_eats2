@@ -8,7 +8,10 @@ use App\Entity\Commande;
 use App\Entity\SousCategorie;
 use App\Entity\User;
 use App\Entity\Produit;
-
+use Swift_Image;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
 use App\Form\CategorieType;
 use App\Form\ProduitType;
 use App\Form\SousCategorieType;
@@ -40,11 +43,6 @@ class BackendController extends AbstractController
         return $this->render('backoffice.html.twig');
     }
 
-
-
-
-
-
     /**
      * @Route("/panier", name="panier")
      */
@@ -58,6 +56,7 @@ class BackendController extends AbstractController
             'produits'=>$produits
         ]);
     }
+
     /**
      * @Route("/ajoutpanier/{id}/{param}", name="ajout_panier")
      */
@@ -73,6 +72,7 @@ class BackendController extends AbstractController
         endif;
 
     }
+
     /**
      * @Route("/retraitpanier/{id}", name="retrait_panier")
      */
@@ -83,6 +83,7 @@ class BackendController extends AbstractController
         return $this->redirectToRoute('panier');
 
     }
+
     /**
      * @Route("/annulepanier/{id}", name="annule_panier")
      */
@@ -93,8 +94,6 @@ class BackendController extends AbstractController
         return $this->redirectToRoute('panier');
 
     }
-
-
 
     /**
      * @Route("/commande", name="commande")
@@ -110,7 +109,7 @@ class BackendController extends AbstractController
         foreach ($panier as $item) {
             $produit=$item['produit'];
             $achat = new Achat();
-            $achat->setArticle($item['produit']);
+            $achat->setProduit($item['produit']);
             $achat->setQuantite($item['quantite']);
             $achat->setPrix($item['produit']->getPrix());
            // $produit->setStock($produit->getStock()-$item['quantite']);
@@ -134,13 +133,12 @@ class BackendController extends AbstractController
     public function gestionCommandes(CommandeRepository $repository)
     {
         $commandes=$repository->findAll();
+        $this->addFlash('success', 'La catégorie a bien été créée!!');
         return $this->render('cedric/gestion_commandes.html.twig',[
-            'commandes'=>$commandes
+            'commandes'=>$commandes,
+
         ]);
     }
-
-
-
 
     /**
      * @Route("/add", name="add_produit")
@@ -176,11 +174,11 @@ class BackendController extends AbstractController
         $produit->setImage($nomImage);
         endif;
         $produit->setCuisinier($this->getUser());
+            $produit->setCommission(5);
+       foreach ($sc as $c):
+        $produit->addSousCategory($c);
+        endforeach;
 
-        $produit->setCommission(5);
-//        foreach ($sc as $c):
-//        $produit->addSousCategory($c);
-//        endforeach;
 
 
 
@@ -436,6 +434,61 @@ class BackendController extends AbstractController
 
 
         ]);
+    }
+
+
+    /**
+     * @Route("/mail", name="mail")
+     */
+    public function send_email(request $request)
+    {
+
+        if (!empty($request->request)):
+            // dd($request->request->get('email'));
+            $transporter = (new Swift_SmtpTransport('smtp-mail.outlook.com', 587, 'tls'))
+                ->setUsername('parteats@outlook.com')
+                ->setPassword('symfonypart78'); // (à changer password)
+
+            $mailer = new Swift_Mailer($transporter);
+            $mess=$request->request->get('message');
+            $nom=$request->request->get('surname');
+            $prenom=$request->request->get('name');
+            $motif=$request->request->get('need');
+
+            $message = (new Swift_Message("$motif"))
+                ->setFrom($request->request->get('email'))
+                ->setTo(['parteats@outlook.com'=> 'PartEats']);
+            $cid = $message->embed(Swift_Image::fromPath('images/cuisine/livraison.jpg'));
+
+            $message->setBody(
+
+                $this->renderView('cedric/test.html.twig',[
+                    'message'=>$mess,
+                    'nom'=>$nom,
+                    'prenom'=>$prenom,
+                    'motif'=>$motif,
+                    'email'=>$request->request->get('email'),
+                    'cid'=>$cid
+                ]),
+                'text/html'
+            );
+
+
+// Send the message
+            $result = $mailer->send($message);
+
+
+            $this->addFlash('success', 'email envoyé');
+            return $this->redirectToRoute('home');
+        endif;
+    }
+
+    /**
+     * @Route("/sendform", name="send_form")
+     */
+    public function form_email()
+    {
+        return $this->render('cedric/Email/mail.html.twig');
     }
 
 

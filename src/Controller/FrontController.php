@@ -28,7 +28,7 @@ class FrontController extends AbstractController
         $souscategories=$sousCategorieRepository->findAll();
 
         return $this->render("front/home.html.twig", [
-            "produits"=>$produits,
+            'produits'=>$produits,
             'categories'=>$categories,
             'souscategories'=>$souscategories
 
@@ -41,47 +41,48 @@ class FrontController extends AbstractController
     /**
      * @route("/homefilter", name="homefilter")
      */
-    public function homefilter(Request $request, ProduitRepository $repository, CategorieRepository $categorieRepository)
+    public function homefilter(Request $request, ProduitRepository $repository, CategorieRepository $categorieRepository, SousCategorieRepository $sousCategorieRepository)
     {
         $filtre=$request->query->all();
 
         $categories=$categorieRepository->findAll();
+        $souscategories=$sousCategorieRepository->findAll();
+$cat=$request->query->get('categorie');
+$souscat=$request->query->get('souscategorie');
+$cp=$request->query->get('cp');
 
         // dd($filtre);
 
-        if ($request->query->get('categorie') && empty($request->query->get('prix'))):
-            $produits=$repository->findBy(['categorie'=>$request->query->get('categorie')]);
-        elseif($request->query->get('prix') && empty($request->query->get('categorie'))):
-            $produits=$repository->findByPrice($request->query->get('prix'));
-        elseif($request->query->get('prix') && $request->query->get('categorie')):
-            $produits=$repository->findByPriceCategorie($request->query->get('prix'),$request->query->get('categorie') );
+        if ($cat && !$cp && !$souscat):
+            $produits=$repository->findBy(["categorie"=>$cat]);
+
+        elseif($souscat && !$cp && !$cat ):
+            $produits=$repository->findBy(["sousCategories"=>$souscat]);
+
+        elseif($cp && !$cat && !$souscat ):
+            $produits=$repository->findBy(["cp"=>$cp]);
+
+        elseif($cat && $souscat && !$cp):
+            $produits=$repository->findByCategorieSousCategorie($cat, $souscat);
+
+        elseif($cat && $cp && !$souscat):
+            $produits=$repository->findByCpCategorie($cat,$cp);
+
+        elseif($souscat && $cat && $cp ):
+            $produits=$repository->findByCategorieSousCategorieCp();
+
+        elseif($cp && $souscat && !$cp ):
+            $produits=$repository->findByCpSousCategorie();
 
         else:$produits=$repository->findAll();
         endif;
-
-
-
         return $this->render('front/home.html.twig',[
             "categories"=>$categories,
-            "produit"=> $produits,
+            "produits"=> $produits,
+            "souscategories"=>$souscategories,
+
         ]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @Route("/cuisine", name="cuisine")
@@ -138,6 +139,18 @@ class FrontController extends AbstractController
 
        ]);
     }
+
+
+    /**
+     * @Route("/mission", name="mission")
+     */
+    public function mission()
+    {
+        return $this->render('mission/index.html.twig', [
+            'controller_name' => 'MissionController',
+        ]);
+    }
+
 
 
 

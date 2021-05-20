@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <h1>PARTEAT</h1>
     <h4>Prêt à régaler vos papilles </h4>
@@ -12,14 +11,16 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3769999.jpg') }}" alt="First slide">
+                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3769999.jpg') }}"
+                     alt="First slide">
                 <h4>Révéler vos talents culinaires près de chez vous</h4>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="{{ asset('image/pexels-ella-olsson-3026808.jpg') }}" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3785693.jpg') }}" alt="Third slide">
+                <img class="d-block w-100" src="{{ asset('image/pexels-andrea-piacquadio-3785693.jpg') }}"
+                     alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -41,36 +42,37 @@
 
 
 
-<form action="{{ path('homefilter') }}"  method="get">
-    <div class="row justify-content-center text-center">
-        <div class="form-group mr-2">
-            <label for="exampleFormControlSelect1">Catégorie</label>
-            <select name="categorie" class="form-control" id="exampleFormControlSelect1">
-                <option value=""></option>
-                {% for categorie in categories %}
-                    <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group mr-2">
-            <label for="exampleFormControlSelect1">Sous-catégorie</label>
-            <select name="sous-categorie" class="form-control" id="exampleFormControlSelect1">
-                <option value=""></option>
-                {% for souscategorie in souscategories %}
-                    <option value="{{ souscategorie.id }}">{{ souscategorie.nom }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div>
-            <label for="exampleFormControlSelect1">Code postale</label><br>
-            <input name="cp" id="cp" type="number" placeholder="Code postale" >
-        </div>
-    </div>
-    <div class="row justify-content-center text-center">
-        <button type="submit">Trier</button>
-    </div>
+    <form action="{{ path('homefilter') }}" method="get">
+        <div class="row justify-content-center text-center">
+            <div class="form-group mr-2">
+                <label for="exampleFormControlSelect1">Catégorie</label>
+                <select name="categorie" class="form-control" id="exampleFormControlSelect1">
+                    <option value=""></option>
+                    {% for categorie in categories %}
+                        <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <label for="exampleFormControlSelect1">Sous-catégorie</label>
+                <select name="sous-categorie" class="form-control" id="exampleFormControlSelect1">
+                    <option value=""></option>
+                    {% for souscategorie in souscategories %}
+                        <option value="{{ souscategorie.id }}">{{ souscategorie.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <label for="exampleFormControlSelect1">Code postale</label><br>
+                <input name="cp" id="cp" type="number" placeholder="Code postale">
 
-</form>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center">
+            <button type="submit">Trier</button>
+        </div>
+
+    </form>
 
 
 
@@ -82,36 +84,38 @@
     <div class="row justify-content-around">
 
         {% for produit in produits %}
-        <div class="card border-danger " style="max-width: 18rem;">
-            <h5 class="card-title">{{ produit.nom }}</h5>
-            <h4>{{ produit.cuisinier.nom }} {{ produit.cuisinier.prenom }}</h4>
+            <div class="col-md-3">
+                <div class="card border-danger " style="max-width: 18rem;">
+                    <div>
+                        <h3 class="card-title bg-avertissement">{{ produit.nom }}</h3>
+                    </div>
+                    <div>
+                        <h3>{{ produit.cuisinier.nom }} {{ produit.cuisinier.prenom }}</h3>
+                        <h4>{{ produit.cuisinier.ville }} - {{ produit.cuisinier.cp }}</h4>
+                    </div>
 
-            <h4>{{ produit.cuisinier.ville }} - {{ produit.cuisinier.cp }}</h4>
+                    <div class="card-img-top mt-3">
+                        <img src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" alt="{{ produit.nom }}"
+                             width="250" height="300">
+                    </div>
 
-            <div class="card-img-top mt-3">
-            <img src="{{ asset('images/imagesUpload/') }}{{ produit.image }}" alt="{{ produit.nom }}" width="250" height="300">
+                    <div class="card-body ">
+
+                        <div>{{ produit.categorie.nom }} - {% for sousCategorie in produit.sousCategories %}
+                                {{ sousCategorie.nom }}
+                            {% endfor %}
+                        </div>
+                        <p class="card-text">{{ produit.description }}</p>
+                        <div>{{ produit.prix }} €</div>
+                        <a href="{{ path('show_produit', {'id': produit.id}) }}" class="btn btn-secondary">Voir</a>
+                        <a href="{{ path('ajout_panier', {'id': produit.id,'param':"home"}) }}"
+                           class="btn btn-secondary">Ajouter
+                            au panier</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-body ">
-
-            <div>{{ produit.categorie.nom }} - {% for sousCategorie in produit.sousCategories  %}
-                        {{ sousCategorie.nom }}
-                    {% endfor %}
-            </div>
-
-            <p class="card-text">{{ produit.description }}</p>
-            <div>{{ produit.prix }} €</div>
-
-            <a href="{{ path('show_produit', {'id': produit.id}) }}" class="btn btn-secondary">Voir</a>
-            <a href="{{ path('ajout_panier', {'id': produit.id,'param':"home"}) }}" class="btn btn-secondary">Ajouter au panier</a>
-            </div>
-
-        </div>
-
         {% endfor %}
-
-
-
-
+    </div>
 
 
 

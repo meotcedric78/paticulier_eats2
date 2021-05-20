@@ -13,14 +13,14 @@
         <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
     {% endblock %}
 
-
+    <link rel="icon" href="image/part_eats.ico" />
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <img  height="40" src="{{ asset('image/Image d’iOS.jpg') }}" alt="">
-    <a class="navbar-brand text-warning" href="{{ path('home') }}">PartEats</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#be5656;">
+    <div class="container-fluid">
+    <img height="40" src="{{ asset('image/Image d’iOS.jpg') }}" alt="icon">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,12 +29,19 @@
     <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active mr-4">
-                <a class="nav-link text-white" href="{{ path('home') }}">Accueil</a></li>
-                <a class="nav-link text-white" href="{{ path('mission') }}">Mission</a>
-                <a class="nav-link text-white" href="{{ path('cuisine') }}">Nos Part-cuisiniers</a>
-                <a class="nav-link text-white" href="">Blog</a>
+                <a class="nav-link text-white" href="{{ path('home') }}">Accueil</a>
+            </li>
+            <a class="nav-link text-white" href="{{ path('mission') }}">Mission</a>
+            <a class="nav-link text-white" href="{{ path('cuisine') }}">Nos Part-cuisiniers</a>
+            <a class="nav-link text-white" href="">Blog</a>
+            <li class="nav-item active mr-4">
+                <a class="nav-link text-white" href="{{ path('send_form')}}">Nous contacter</a>
+            </li>
+            <li class="nav-item">
+                <h1 style="margin-left: 400px; color: white;" href="{{ path('home') }}">Parteats</h1>
+            </li>
         </ul>
-            {% if app.user %}
+        {% if app.user %}
 
 
 
@@ -42,7 +49,7 @@
             <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    utilisateur
+                  Utilisateur
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('profil') }}">Profil</a>
@@ -62,13 +69,13 @@
             </div>
         {% else %}
 
-            <a class="nav-link " href="{{path('login')}}">Connexion</a>
-            <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
+            <a class="nav-link " style="color:white;" href="{{ path('login') }}">Connexion</a>
+            <button  type="button" class="btn btn-light me-3 " href="{{ path('inscription') }}">Inscription gratuite</button>
         {% endif %}
     </div>
 
     {% if is_granted('ROLE_USER') %}
-    <a href="{{ path('panier') }}">Panier</a>
+        <a class="text-white" href="{{ path('panier') }}">Panier</a>
     {% endif %}
 </nav>
 
@@ -89,13 +96,11 @@
     <script src="{{ asset('js/select2.js') }}"></script>
 {% endblock %}
 
-{% include 'cedric/footer.html.twig' %}
 
 </body>
 
 
-
-
+{% include 'cedric/footer.html.twig' %}
 
 
 </html>

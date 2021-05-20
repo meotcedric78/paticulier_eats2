@@ -19,27 +19,41 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-    public function findByPrice($value)
+    public function findByCpCategorie($cp, $categorie)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.prix < :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.prix', 'ASC')
+            ->andWhere("a.cp = $cp ", "a.categorie = $categorie")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findByCpSousCategorie($cp, $souscategorie)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere("a.cp = $cp", "a.souscategorie = $souscategorie")
             ->getQuery()
             ->getResult()
             ;
     }
 
-    public function findByPriceCategorie($value, $categorie)
+    public function findByCategorieSousCategorie($categorie, $souscategorie)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.prix < :val', "a.categorie = $categorie")
-            ->setParameter('val', $value)
-            ->orderBy('a.prix', 'ASC')
+            ->andWhere("a.categorie = $categorie", "a.souscategorie = $souscategorie")
             ->getQuery()
             ->getResult()
             ;
     }
+
+    public function findByCategorieSousCategorieCp($categorie, $souscategorie,$cp)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere("a.categorie = $categorie", "a.souscategorie = $souscategorie", "a.cp = $cp")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
 
     // /**

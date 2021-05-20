@@ -4,54 +4,75 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
 <div class="example-wrapper">
     <h1>Notre mission</h1>
-<!--
+    <!--
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ 'C:/Users/meo78/Desktop/Symfony/particuliers_eats/src/Controller/MissionController.php'|file_link(0) }}">src/Controller/MissionController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/meo78/Desktop/Symfony/particuliers_eats/templates/mission/index.html.twig'|file_link(0) }}">templates/mission/index.html.twig</a></code></li>
     </ul>
-</div>--!>
-    <img style=" text-align: center; margin: auto; background-size: 100% auto;" src="images/mission/logos.jpg" alt="l'image et le logo">
+</div>  ²²--!>
+    <img style=" text-align: center; margin: auto; background-size: 100% auto;" src="images/mission/logos.jpg"
+         alt="l'image et le logo">
 
     <h2 style="padding: 15px; width: 60%; margin: 0 auto">Le déroulement du site</h2>
 
     <div class="card mb-3 border-danger" style="max-width: 800px; margin: 60px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="images/mission/premier image.jpg" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                <img src="images/mission/premier image.jpg" alt="une personne qui donne un plat a une autre personne"
+                     style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title text-danger mb-3" style="margin: 20px;">Désormais ce sont vos voisins qui cuisinent pour vous, ou vous qui cuisinez pour eux !</h5>
-                    <p class="card-text" style="margin: 20px;">Une fois installée sur un ordinateur ou tablette, l’application Parteats offre une solution permanente pour des repas toujours faits-maison. Grâce à Parteats, tous les gourmets ont
-                        désormais dans leur poche le moyen de récupérer un plat parfaitement cuisiné par un réseau de parteateurs talentueux.</p>
-
+                    <h5 class="card-title text-danger mb-3" style="margin: 20px;">Désormais ce sont vos voisins qui
+                        cuisinent pour vous, ou vous qui cuisinez pour eux !
+                    </h5>
+                    <p class="card-text" style="margin: 20px;">Une fois installée sur un ordinateur ou tablette,
+                        l’application Parteats offre une solution permanente pour des repas toujours faits-maison. Grâce
+                        à Parteats, tous les gourmets ont
+                        désormais dans leur poche le moyen de récupérer un plat parfaitement cuisiné par un réseau de
+                        parteateurs talentueux.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
 
-
     <div class="card mb-3 border-primary" style="max-width: 800px; margin: 60px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="images/cuisine/welcome.png" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 40px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                <img src="images/cuisine/welcome.png" alt="une personne qui donne un plat a une autre personne"
+                     style="max-width: 250px; margin: 40px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title text-primary mb-3" style="margin-left: 30px;">Des résultats en temps réel Nous sommes très eux de vous presenter notre site internet</h5>
-                    <p class="card-text" style="margin: 20px;">Part’eat.fr est un réseau social régional, axé sur le thème de la cuisine de proximité de toutes origines et en tout
-                        genre entre particuliers dont vous pouvez sélectionner la localité, offrant la possibilité de pouvoir dénicher et de mettre en valeur tous les talents
-                        culinaires de vos alentours, qui vous proposeront leurs spécialités à moindre coût, bénéficiant de leurs meilleures réalisations dans vos assiettes en
-                        deux coups de cuillère à pot !.</p>
-
+                    <h5 class="card-title text-primary mb-3" style="margin-left: 30px;">Des résultats en temps réel Nous
+                        sommes très eux de vous presenter notre site internet.
+                    </h5>
+                    <p class="card-text" style="margin: 20px;">Part’eat.fr est un réseau social régional, axé sur le
+                        thème de la cuisine de proximité de toutes origines et en tout
+                        genre entre particuliers dont vous pouvez sélectionner la localité, offrant la possibilité de
+                        pouvoir dénicher et de mettre en valeur tous les talents
+                        culinaires de vos alentours, qui vous proposeront leurs spécialités à moindre coût, bénéficiant
+                        de leurs meilleures réalisations dans vos assiettes en
+                        deux coups de cuillère à pot !.
+                    </p>
                 </div>
             </div>
         </div>
@@ -60,20 +81,27 @@
     <div class="card mb-3 border-danger" style="max-width: 800px; margin: 60px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="images/mission/localisation.png" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                <img src="images/mission/localisation.png" alt="une personne qui donne un plat a une autre personne"
+                     style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title text-danger mb-3" style="margin: 20px;">Notre secret : l’hyper-proximité !</h5>
-                    <p class="card-text" style="margin: 20px;">Grâce à un maillage serré des cordons bleus de votre quartier, quelques dizaines de mètres vous séparent de
-                        votre prochain repas. Nul besoin de livraison ! La proximité de votre Parteateur suscite la rencontre, l’échange et la confiance… Cette hyper-proximité
-                        permet d’autre part de s’affranchir de la livraison. Ce que l’on désire le plus chez Parteats c’est que le gourmet fasse connaissance avec son Parteateur.
-                        Cette rencontre doit susciter la confiance mais aussi l’envie chez le gourmand d’évoquer auprès de ses voisins la présence d’un fantastique cuisinier dans
-                        le quartier. Le maillage du territoire, indispensable à la confiance que nous désirons instaurer entre Gourmands et Parteateurs, demande un peu de temps.
-                        C’est la raison pour laquelle Parteats n’est pour le moment disponible que dans les zones indiquées sur notre carte de déploiement. Vous avez hâte de voir
+                    <p class="card-text" style="margin: 20px;">Grâce à un maillage serré des cordons bleus de votre
+                        quartier, quelques dizaines de mètres vous séparent de
+                        votre prochain repas. Nul besoin de livraison ! La proximité de votre Parteateur suscite la
+                        rencontre, l’échange et la confiance… Cette hyper-proximité
+                        permet d’autre part de s’affranchir de la livraison. Ce que l’on désire le plus chez Parteats
+                        c’est que le gourmet fasse connaissance avec son Parteateur.
+                        Cette rencontre doit susciter la confiance mais aussi l’envie chez le gourmand d’évoquer auprès
+                        de ses voisins la présence d’un fantastique cuisinier dans
+                        le quartier. Le maillage du territoire, indispensable à la confiance que nous désirons instaurer
+                        entre Gourmands et Parteateurs, demande un peu de temps.
+                        C’est la raison pour laquelle Parteats n’est pour le moment disponible que dans les zones
+                        indiquées sur notre carte de déploiement. Vous avez hâte de voir
                         Parteats arriver dans votre quartier ? Dites-le nous ! Vous désirez devenir Pareateur ?
-                        Contactez-nous ! dans tous les cas, nous reviendrons rapidement vers vous..</p>
-
+                        Contactez-nous ! dans tous les cas, nous reviendrons rapidement vers vous..
+                    </p>
                 </div>
             </div>
         </div>
@@ -82,34 +110,33 @@
     <div class="card mb-3 border-primary" style="max-width: 800px; margin: 60px">
         <div class="row g-0 ">
             <div class="col-md-4">
-                <img src="images/mission/paiement.jpg" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                <img src="images/mission/paiement.jpg" alt="une personne qui donne un plat a une autre personne"
+                     style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title text-primary mb-3" style="margin: 20px;">Un paiement intégré et sécurisé</h5>
-                    <p class="card-text" style="margin: 20px;">Lors de chaque transaction, le paiement 100% sécurisé est effectué au sein de l’application. Il n’y a donc jamais d’échange d’argent entre le Parteateur et ses gourmets.
+                    <p class="card-text" style="margin: 20px;">Lors de chaque transaction, le paiement 100% sécurisé est
+                        effectué au sein de l’application. Il n’y a donc jamais d’échange d’argent entre le Parteateur
+                        et ses gourmets.
 
-                        Pas de monnaie à rendre. Pas d’appoint à préparer. Pas de paiement reporté au « lendemain ». Le Parteateur se concentre sur sa passion tandis que le gourmet se focalise
+                        Pas de monnaie à rendre. Pas d’appoint à préparer. Pas de paiement reporté au « lendemain ». Le
+                        Parteateur se concentre sur sa passion tandis que le gourmet se focalise
                         sur sa future dégustation.
-                       </p>
-
+                    </p>
                 </div>
             </div>
         </div>
     </div>
     <br>
     <br>
-    <div class=" row justify-content-around"  >
-        <i class="fas fa-tablet-alt fa-5x text-primary" ></i>
+    <div class=" row justify-content-around">
+        <i class="fas fa-tablet-alt fa-5x text-primary"></i>
         <i class="fas fa-laptop fa-5x text-danger"></i>
         <i class="fas fa-walking fa-5x text-primary"></i>
+    </div>
 
 
+    <script src="https://kit.fontawesome.com/b1e7d9a3a2.js" crossorigin="anonymous"></script>
 
-
-        <div/>
-
-
-        <script src="https://kit.fontawesome.com/b1e7d9a3a2.js" crossorigin="anonymous"></script>
-
-        {% endblock %}
+    {% endblock %}
