@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
+
+    {% endblock %}
+
+    <h2>Rejoignez la communauter parteat</h2>
+    <h3>La petite Brigade Parteats</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img height="500" width="600"  src="{{ asset('image/undraw_team_spirit_hrr4 (1).png') }}" style="float: right"
+         alt="l'équipe est là">
+    <h3 style="line-height: 70px" >On a de la chance de s'être rencontrés !</h3>
+    <br>
+    <br>
+
+    <div class="card text-center">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Chez WF3</h5>
+            <p class="card-text" style="font-family: cursive";>Nous avons intégrer une formation de concepteur développeur c'est ainsi nous avons une idée de créer parteat car d'abord
+                nous sommes très gourmand et nous voulons que vous aussi puissez proffiter des talents culainaires de vos voisins plus besoins de
+                parcourir des kilomètre pour déguster de bon plat </p>
+
+        </div>
+        <div class="card-footer text-muted">
+            il ya 1 jour
+        </div>
+    </div>
+    <img src="{{ asset('image/avatarCedric.png') }}" class="clip-path" alt="Portrait">
+    <img src="{{ asset('image/avatarAssa.png') }}" class="clip-path" alt="Portrait">
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+{% endblock %}
+

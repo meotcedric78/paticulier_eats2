@@ -14,11 +14,11 @@
     {% endblock %}
 
 
-</head>
-<body>
+    </head>
+    <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <img  height="40" src="{{ asset('image/Image d’iOS.jpg') }}" alt="">
     <a class="navbar-brand text-warning" href="{{ path('home') }}">PartEats</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,14 +32,16 @@
                 <a class="nav-link text-white" href="{{ path('home') }}">Accueil</a></li>
                 <a class="nav-link text-white" href="{{ path('mission') }}">Mission</a>
                 <a class="nav-link text-white" href="{{ path('cuisine') }}">Nos Part-cuisiniers</a>
-                <a class="nav-link text-white" href="">Blog</a>
+                <a class="nav-link text-white" href="{{ path('blog') }}">Blog</a>
         </ul>
             {% if app.user %}
 
+                <img src={{ asset('image/fond-nourriture-saine-croquis-dessines-main_52683-18952.jpg') }}
+                     id=fondecran class=fondecran alt=/>
 
 
 
-            <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     utilisateur
@@ -73,9 +75,10 @@
 </nav>
 
 
-<div class="container">
 
-    {% block body %}{% endblock %}</div>
+
+
+    {% block body %}{% endblock %}
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
