@@ -44,10 +44,6 @@ class Produit
      */
     private $commission;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Achat::class, cascade={"persist", "remove"})
-     */
-    private $achat;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produit")
@@ -129,24 +125,6 @@ class Produit
         return $this->commission;
     }
 
-    public function setCommission(float $commission): self
-    {
-        $this->commission = $commission;
-
-        return $this;
-    }
-
-    public function getAchat(): ?Achat
-    {
-        return $this->achat;
-    }
-
-    public function setAchat(?Achat $achat): self
-    {
-        $this->achat = $achat;
-
-        return $this;
-    }
 
     public function getCategorie(): ?Categorie
     {
@@ -194,6 +172,10 @@ class Produit
         $this->cuisinier = $cuisinier;
 
         return $this;
+    }
+
+    public function setCommission(int $int)
+    {
     }
 
 }

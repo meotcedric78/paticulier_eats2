@@ -14,41 +14,37 @@
 </head>
 <body>
 <div class="row">
-    <div style="  height: 100vh" class="col-md-3  vertical-nav bg-dark pl-3" id="sidebar">
+    <div style="  height: 100vh" class="col-md-3  vertical-nav bg-warning pl-3" id="sidebar">
         <nav class="ml-3 p-3">
             <ul class="nav flex-column pt-5">
-                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white" href="{{path('home') }}">Accueil</a></li>
-                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white" href="{{path('utilisateurs') }}">Utilisateurs</a></li>
+                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item btn btn-secondary m-3"><a class="nav-link text-white"
+                                                              href="{{ path('utilisateurs') }}">Utilisateurs</a></li>
                 <li class="nav-item btn btn-secondary m-3">
                     <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Produits
                         </a>
-
                         <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="">Liste des produits</a>
-
-                            <a class="dropdown-item text-white" href="{{ path('gestion_produit') }}">Gestion des produits</a>
-
-                            <div class="dropdown-divider text-white"></div>
+                            <a class="dropdown-item text-white" href="{{ path('gestion_produit') }}">
+                                Gestion des produits
+                            </a>
                         </div>
                     </div>
                 </li>
 
-                <li class="nav-item btn btn-secondary m-3">
+                <li class="nav-item btn btn-success m-3">
                     <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Catégorie
                         </a>
-
                         <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="">Liste des catégories</a>
-
-                            <a class="dropdown-item text-white" href="{{ path('gestion_categorie') }}">Gestion des catégories</a>
-
-                            <div class="dropdown-divider text-white"></div>
+                            <a class="dropdown-item text-white" href="{{ path('gestion_categorie') }}">
+                                Gestion des catégories
+                            </a>
                         </div>
                     </div>
                 </li>
@@ -59,13 +55,10 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sous-Catégorie
                         </a>
-
                         <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="">Liste des Sous-Categorie</a>
-
-                            <a class="dropdown-item text-white" href="{{ path('gestion_souscategorie') }}">Gestion des Sous-Categorie</a>
-
-                            <div class="dropdown-divider text-white"></div>
+                            <a class="dropdown-item text-white" href="{{ path('gestion_souscategorie') }}">
+                                Gestion des Sous-Categorie
+                            </a>
                         </div>
                     </div>
                 </li>
@@ -76,12 +69,11 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Commandes
                         </a>
-
                         <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="">Liste des commandes</a>
-
-                            <a class="dropdown-item text-white" href="{{ path('gestion_commandes') }}">Gestion des commandes</a>
-
+                            <a class="dropdown-item text-white" href="{{ path('gestion_commandes') }}">
+                                Gestion des commandes
+                            </a>
                             <div class="dropdown-divider text-white"></div>
                         </div>
                     </div>
@@ -96,29 +88,23 @@
 
                         <div class="dropdown-menu  bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="">Liste des commission</a>
-
                             <a class="dropdown-item text-white" href="">Gestion des commission</a>
-
                             <div class="dropdown-divider text-white"></div>
                         </div>
                     </div>
                 </li>
-
-
             </ul>
         </nav>
-
     </div>
-    <div class="col">
 
+    <div class="col">
         <div class="container">
             <div class="text-center">
                 <h1>Back-office</h1>
             </div>
             {% block body %}
-
-
-            {% endblock %}</div>
+            {% endblock %}
+        </div>
     </div>
 </div>
 

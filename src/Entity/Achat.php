@@ -32,6 +32,26 @@ class Achat
      */
     private $commande;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="achats")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $produit;
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,7 +93,12 @@ class Achat
         return $this;
     }
 
-    public function setArticle($article)
-    {
-    }
+
+
+
+
+
+
+
+
 }
