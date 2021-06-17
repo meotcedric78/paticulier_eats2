@@ -144,9 +144,17 @@ class FrontController extends AbstractController
      */
     public function blog()
     {
+
        return $this->render('front/blog.html.twig');
 
+
+
 }
+    /**
+     * @Route("/mission", name="mission")
+     */
+    public function mission()
+    {
 
-
+        return $this->render('mission\index.html.twig'); }
 }
