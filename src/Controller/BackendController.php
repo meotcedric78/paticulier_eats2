@@ -30,11 +30,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-/**
- * @Route("/admin")
- */
-class BackendController extends AbstractController
-{
+    /**
+    * @Route("/admin")
+    */
+    class BackendController extends AbstractController
+    {
+    // ici on appelle la classe de annotation, qui s'appelle Route
+    // chaque render de vue appelle une route à configurer. la route doit être déclarer
+    // @Route("/connexion", name"connexion") "" obligatoire
     /**
      * @Route("/", name="backoffice")
      */
@@ -100,11 +103,15 @@ class BackendController extends AbstractController
      */
     public function commande(PanierService $panierService, EntityManagerInterface $manager)
     {
+        // fonction appelant le service panier afin de le transformer en commande,
+    // ainsi chaques articles avec leur quantité enregistrés dans le panier correspondra à un achat.
+    // le cumul de tout ces achats aura un seule et même id de commande et créera donc une commande reliée par l'id aux achats, eux mêmes reliés aux articles en bdd
         $panier = $panierService->getFullPanier();
 
         $commande = new Commande();
         $commande->setTotal($panierService->getTotal());
         $commande->setUser($this->getUser());
+
 
         foreach ($panier as $item) {
             $produit=$item['produit'];
@@ -132,6 +139,8 @@ class BackendController extends AbstractController
      */
     public function gestionCommandes(CommandeRepository $repository)
     {
+        //pour sélectionner des données déjà insérées en table, on appelle le repository de notre entité concernée (table en bdd) .
+        //un repository c'est une classe qui contient des méthodes permettant d'effectuer des requete de SELECT
         $commandes=$repository->findAll();
         $this->addFlash('success', 'La catégorie a bien été créée!!');
         return $this->render('cedric/gestion_commandes.html.twig',[
@@ -148,29 +157,44 @@ class BackendController extends AbstractController
         dump($request);
         $produit= new Produit();
         dump($produit);
+        // nous avons créé une classe qui permet de générer le formulaire d'ajout de produits,
+        // il faut dans le controller importer cette Type et relier le formulaire à notre instanciation d'entité produits
         $form=$this->createForm(ProduitType::class, $produit, array('ajouter'=>true));
+        // on va chercher dans l'objet handlerequest qui permet de recuperer chaques données saisie des champs de formulaire.
+        // il s'assure de la coordination entre formType et entity afin de générer les bon setteurs pour chaques propriété de l'entité
         $form->handleRequest($request);
         dump($produit);
         dump($request);
 
-
+        // ici on informe par la condition if. que si le bouton submit a été préssé et que les données du formulaires sont conforme à notre entité (type) et à nos contrainte,
+        // il peut faire intervenir doctrine et son manager pour preparer puis executer les requêtes
         if ($form->isSubmitted() && $form->isValid()):
+            // on récupère ici toutes les données de l'input name="image"
             $imageFile=$form->get('image')->getData();
         $sc=$request->request->get('produit')['sousCategories'];
-        if($imageFile):
+            // ici on place le if pour vérifier qu'une image a été uploadé dans notre input de formulaire, si oui, renverra true
+            if($imageFile):
+                // on redefini le nom de notre image pour s'assuré que celui ci soit unique et n'aille pas écraser un autre fichier du même nom
             $nomImage=date("YmdHis")."-".uniqid()."-".$imageFile->getClientOriginalName();
 
+                // envoie de l'image dans images/imagesUpload
         try {
             $imageFile->move(
                 $this->getParameter('images_directory'),
                 $nomImage
             );
+            // méthode move () attend 2 paramètres et permet de déplacer un fichier des fichier temps du server
+            // vers un emplacement défini.
+            //   parametre1: l'emplacement défini, paramétré au préalable dans config/service.yaml
+            //    => images_directory: '%kernel.project_dir%/public/images/imagesUpload' à placer sous parameters.
+            // parametre2: le nom du fichier à deplacer
         }
         catch (FileExeception $e){
             $this->redirectToRoute('add_produit.html.twig',[
                 'erreur'=>$e
             ]);
         }
+                // envoie du nouveau nom en BDD
         $produit->setImage($nomImage);
         endif;
         $produit->setCuisinier($this->getUser());
@@ -185,6 +209,7 @@ class BackendController extends AbstractController
         $manager->persist($produit);
         $manager->flush();
 
+            // ici si tout s'est bien passé, on donne redirection sur le site
         $this->addFlash("success", "Le produit à bien été ajouté");
 
         return $this->redirectToRoute("gestion_produit");
