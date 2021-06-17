@@ -10,146 +10,177 @@
 {% block title %}Notre mission{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<!--<div class="example-wrapper">
-<!--
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/meo78/Desktop/Symfony/particuliers_eats/src/Controller/MissionController.php'|file_link(0) }}">src/Controller/MissionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/meo78/Desktop/Symfony/particuliers_eats/templates/mission/index.html.twig'|file_link(0) }}">templates/mission/index.html.twig</a></code></li>
-    </ul>
-</div>--!>
 
-    <img src="{{ asset('image/Notre mission (1).gif') }}"   class= "img-fluid" style="width:100%;background-size: cover"
-     alt="Notre mission ">
+    <img src="{{ asset('image/Notre mission (1).gif') }}" class="img-fluid" style="width:100%; height:600px;background-size: cover"
+         alt="Notre mission ">
 
-<div class="container"
+    <div class="container">
 
-    <h2 style="padding: 15px; width: 60%; margin: 0 auto">Bienvenue chez Parteat</h2>
+        <h2 class="m-3 p-3">Bienvenue chez Parteats</h2>
 
-    <div class="card mb-3 border-danger" style="max-width: 800px; margin: 60">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="images/mission/premier image.jpg" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ asset('image/voisino.jpeg') }}" alt="une personne qui donne un plat a une autre personne" width="500px">
+                        <h5 class="card-title">Désormais ce sont vos voisins qui
+                            cuisinent pour vous, ou vous qui cuisinez pour eux !</h5>
+                        <p class="card-text">Une fois installée sur un ordinateur ou tablette, le
+                            site
+                            Parteats offre une solution permanente pour des repas toujours faits-maison. Grâce à
+                            Parteats,
+                            tous les gourmets ont
+                            désormais dans leur poche le moyen de récupérer un plat parfaitement cuisiné par un réseau
+                            de
+                            parteateurs talentueux.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title text-danger mb-3" style="margin: 20px;">Désormais ce sont vos voisins qui cuisinent pour vous, ou vous qui cuisinez pour eux !</h5>
-                    <p class="card-text" style="margin: 20px;">Une fois installée sur un ordinateur ou tablette, le site Parteats offre une solution permanente pour des repas toujours faits-maison. Grâce à Parteats, tous les gourmets ont
-                        désormais dans leur poche le moyen de récupérer un plat parfaitement cuisiné par un réseau de parteateurs talentueux.</p>
+            <div class="col-sm-6" style="color: orange">
+                <div class="card">
+                    <div class="card-body" style="color: orange">
+                        <img src="{{ asset('image/Red Green Italian Restaurant Menu.gif') }}" height="500px" width="400" alt="Chef cuisinier">
+                        <h3 class="card-title font-weight-bold">Des plats fait Maison et surtout avec Passion <i class="far fa-heart"></i></h3>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div data-testid="colorUnderlay" class="mlsxv _22Lsw">
-       <div role="gridcell" class="">
-
-       </div>
 
 
-        <div class="container" style="display: inline-flex; justify-content: space-around">
-            <div class="flex" style="text-align: left" >
 
-                <img height="300" width="400" src="{{ asset('image/undraw_Chef_cu0r.png') }}" alt="Cuisinier">
-                <p style="text-align: center" font-familly="cursive">Nos cuisiniers préparent leurs plats et propose sur Parteat</p>
+        <div data-testid="colorUnderlay" class="mlsxv _22Lsw">
+            <div role="gridcell" class="">
+
             </div>
 
-            <div class="flex" style="text-align: center">
+            <h1 class="m-3 p-3" style="text-align: center">Comment ça marche ? </h1>
+            <div class="container" style="display: inline-flex; justify-content: space-around">
+                <div class="flex" style="text-align: left">
 
-                <img height="300" width="300" src="{{ asset('image/undraw_online_groceries_a02y.png') }}  alt="Commande">
-                <p style="text-align: center">Je commande mon plat sur Parteat</p>
+                    <img height="300" width="400" src="{{ asset('image/undraw_Chef_cu0r.png') }}" alt="Cuisinier">
+                    <p class="m-3 p-3 font-weight-bold" style="text-align: center;font-family: 'Arial'; color: orange">Nos cuisiniers préparent leurs plats et propose
+                        sur
+                        Parteat</p>
+                </div>
+
+                <div class="flex" style="text-align: center">
+
+                    <img height="300" width="300" src="{{ asset('image/undraw_online_groceries_a02y.png') }} "
+                         alt="Commande">
+                    <p class="m-3 p-3 font-weight-bold" style="text-align: center; font-family: 'Arial'; color: orange">Je commande mon plat sur Parteat</p>
+                </div>
+
+                <div class="flex" style="text-align:right ">
+
+                    <img height="300" width="300" src="{{ asset('image/undraw_package_arrived_63rf.png') }}"
+                         alt="Livraison">
+                    <p class="m-3 p-3 font-weight-bold" style="text-align: center; font-family: 'Arial'; color: orange">Je récupère ou fais livrer mon plat chez le cuisinier </p>
+                </div>
             </div>
 
-            <div class="flex" style="text-align:right ">
 
-                <img height="300" width="300" src="{{ asset('image/undraw_package_arrived_63rf.png') }}" alt="Livraison">
-                <p style="text-align: center">Je récupère ou fais livrer mon plat chez le cuisinier </p>
-            </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ asset('image/Voisin qui mange.gif') }}" alt="une personne qui donne un plat a une autre personne">
+                        <h5 class="card-title"></h5>
 
-
-    </div>
-
-
-    <div class="card mb-3 border-primary" style="max-width: 800px; margin: 60px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="images/cuisine/welcome.png" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 40px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title text-primary mb-3" style="margin-left: 30px;">Des résultats en temps réel Nous sommes très eux de vous presenter notre site internet</h5>
-                    <p class="card-text" style="margin: 20px;">Part’eat.fr est un réseau social régional, axé sur le thème de la cuisine de proximité de toutes origines et en tout
-                        genre entre particuliers dont vous pouvez sélectionner la localité, offrant la possibilité de pouvoir dénicher et de mettre en valeur tous les talents
-                        culinaires de vos alentours, qui vous proposeront leurs spécialités à moindre coût, bénéficiant de leurs meilleures réalisations dans vos assiettes en
-                        deux coups de cuillère à pot !.</p>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="images/cuisine/welcome.png" alt="une personne qui donne un plat a une autre personne"width="500px">
+                        <h5 class="card-title">Des résultats en temps réel</h5>
+                        <p class="card-text">Parteats.fr est un réseau social régional, axé sur le
+                            thème de la cuisine de proximité de toutes origines et en tout
+                            genre entre particuliers dont vous pouvez sélectionner la localité, offrant la possibilité
+                            de
+                            pouvoir dénicher et de mettre en valeur tous les talents
+                            culinaires de vos alentours, qui vous proposeront leurs spécialités à moindre coût,
+                            bénéficiant
+                            de leurs meilleures réalisations dans vos assiettes en
+                            deux coups de cuillère à pot !</p>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="card mb-3 border-danger" style="max-width: 800px; margin: 60px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="images/mission/localisation.png" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title text-danger mb-3" style="margin: 20px;">Notre secret : l’hyper-proximité !</h5>
-                    <p class="card-text" style="margin: 20px;">Grâce à un maillage serré des cordons bleus de votre quartier, quelques dizaines de mètres vous séparent de
-                        votre prochain repas. Nul besoin de livraison ! La proximité de votre Parteateur suscite la rencontre, l’échange et la confiance… Cette hyper-proximité
-                        permet d’autre part de s’affranchir de la livraison. Ce que l’on désire le plus chez Parteats c’est que le gourmet fasse connaissance avec son Parteateur.
-                        Cette rencontre doit susciter la confiance mais aussi l’envie chez le gourmand d’évoquer auprès de ses voisins la présence d’un fantastique cuisinier dans
-                        le quartier. Le maillage du territoire, indispensable à la confiance que nous désirons instaurer entre Gourmands et Parteateurs, demande un peu de temps.
-                        C’est la raison pour laquelle Parteats n’est pour le moment disponible que dans les zones indiquées sur notre carte de déploiement. Vous avez hâte de voir
-                        Parteats arriver dans votre quartier ? Dites-le nous ! Vous désirez devenir Pareateur ?
-                        Contactez-nous ! dans tous les cas, nous reviendrons rapidement vers vous..</p>
 
+        <div class="card mb-3 border-danger" style="max-width: 800px; margin: 60px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="images/mission/localisation.png" alt="une personne qui donne un plat a une autre personne"
+                         style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger mb-3" style="margin: 20px;">Notre secret : l’hyper-proximité
+                            !</h5>
+                        <p class="card-text" style="margin: 20px;">Grâce à un maillage serré des cordons bleus de votre
+                            quartier, quelques dizaines de mètres vous séparent de
+                            votre prochain repas. Nul besoin de livraison ! La proximité de votre Parteateur suscite la
+                            rencontre, l’échange et la confiance… Cette hyper-proximité
+                            permet d’autre part de s’affranchir de la livraison. Ce que l’on désire le plus chez
+                            Parteats
+                            c’est que le gourmet fasse connaissance avec son Parteateur.
+                            Cette rencontre doit susciter la confiance mais aussi l’envie chez le gourmand d’évoquer
+                            auprès
+                            de ses voisins la présence d’un fantastique cuisinier dans
+                            le quartier. Le maillage du territoire, indispensable à la confiance que nous désirons
+                            instaurer
+                            entre Gourmands et Parteateurs, demande un peu de temps.
+                            C’est la raison pour laquelle Parteats n’est pour le moment disponible que dans les zones
+                            indiquées sur notre carte de déploiement. Vous avez hâte de voir
+                            Parteats arriver dans votre quartier ? Dites-le nous ! Vous désirez devenir Pareateur ?
+                            Contactez-nous ! dans tous les cas, nous reviendrons rapidement vers vous..</p>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="card mb-3 border-primary" style="max-width: 800px; margin: 60px">
-        <div class="row g-0 ">
-            <div class="col-md-4">
-                <img src="images/mission/paiement.jpg" alt="une personne qui donne un plat a une autre personne" style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title text-primary mb-3" style="margin: 20px;">Un paiement intégré et sécurisé</h5>
-                    <p class="card-text" style="margin: 20px;">Lors de chaque transaction, le paiement 100% sécurisé est effectué au sein de l’application. Il n’y a donc jamais d’échange d’argent entre le Parteateur et ses gourmets.
 
-                        Pas de monnaie à rendre. Pas d’appoint à préparer. Pas de paiement reporté au « lendemain ». Le Parteateur se concentre sur sa passion tandis que le gourmet se focalise
-                        sur sa future dégustation.
-                       </p>
+        <div class="card mb-3 border-primary" style="max-width: 800px; margin: 60px">
+            <div class="row g-0 ">
+                <div class="col-md-4">
+                    <img src="images/mission/paiement.jpg" alt="une personne qui donne un plat a une autre personne"
+                         style="max-width: 250px; margin: 50px; box-sizing: border-box; border: 0; width: 1000px; margin-left: 10px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-3" style="margin: 20px;">Un paiement intégré et
+                            sécurisé</h5>
+                        <p class="card-text" style="margin: 20px;">Lors de chaque transaction, le paiement 100% sécurisé
+                            est
+                            effectué au sein de l’application. Il n’y a donc jamais d’échange d’argent entre le
+                            Parteateur
+                            et ses gourmets.
 
+                            Pas de monnaie à rendre. Pas d’appoint à préparer. Pas de paiement reporté au « lendemain ».
+                            Le
+                            Parteateur se concentre sur sa passion tandis que le gourmet se focalise
+                            sur sa future dégustation.
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <br>
-    <div class=" row justify-content-around"  >
-        <i class="fas fa-tablet-alt fa-5x text-primary" ></i>
-        <i class="fas fa-laptop fa-5x text-danger"></i>
-        <i class="fas fa-walking fa-5x text-primary"></i>
-
+        <br>
+        <br>
 
     </div>
 
 
+    <script src="https://kit.fontawesome.com/b1e7d9a3a2.js" crossorigin="anonymous"></script>
 
-
-
-        <script src="https://kit.fontawesome.com/b1e7d9a3a2.js" crossorigin="anonymous"></script>
-
-        {% endblock %}
+{% endblock %}

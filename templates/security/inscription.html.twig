@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
     {% if mode==true %}
         <h1>Inscription</h1>
     {% else %}
@@ -19,6 +20,7 @@
     {{ form_row(form.confirm_password) }}
     {{ form_row(form.birthday) }}
     {{ form_end(form) }}
+    </div>
 
 {% endblock %}
 
